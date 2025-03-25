@@ -1,11 +1,24 @@
+import { Route, Router, Routes } from "react-router-dom";
 import "./App.css";
-import BookList from "./BookList";
+import { CartProvider } from "./context/CartContext";
+import BooksPage from "./pages/BooksPage";
+import CartPage from "./pages/CartPage";
+import PurchasePage from "./pages/PurchasePage";
 
 
 function App() {
   return (
     <>
-      <BookList />
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<BooksPage/>} />
+            <Route path="/books" element={<BooksPage />} />
+            <Route path="/purchase/:title/:bookID" element={<PurchasePage />} />
+            <Route path="/cart" element={<CartPage />} />
+          </Routes>
+        </Router>
+      </CartProvider>
     </>
   );
 }

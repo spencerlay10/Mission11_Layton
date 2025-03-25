@@ -1,8 +1,9 @@
 // Imports
 import { useEffect, useState } from "react";
-import { Book } from "./types/Book";
+import { Book } from "../types/Book";
+import { useNavigate } from "react-router-dom";
 
-function BookList() {
+function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   // Hooks
   const [books, setBooks] = useState<Book[]>([]);
   const [pageSize, setPageSize] = useState<number>(10);
@@ -11,12 +12,21 @@ function BookList() {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [sortedBooks, setSortedBooks] = useState<Book[]>([]);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // 'asc' for ascending, 'desc' for descending
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
+      const categoryParams = selectedCategories
+        .map((cat) => `projectTypes=${encodeURIComponent(cat)}`)
+        .join("&");
+
       const response = await fetch(
-        `https://localhost:5000/Book?pageSize=${pageSize}&pageNum=${pageNum}`
+        `https://localhost:5000/Book?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ""}`,
+        {
+          credentials: "include",
+        }
       ); // Pulling from the backend
+
       const data = await response.json();
       setBooks(data.books);
       setTotalItems(data.totalNumBooks);
@@ -24,7 +34,7 @@ function BookList() {
     };
 
     fetchBooks();
-  }, [pageSize, pageNum, totalItems]);
+  }, [pageSize, pageNum, totalItems, selectedCategories]);
 
   // Function to sort books by title or any other field
   const handleSort = (field: keyof Book) => {
@@ -42,13 +52,6 @@ function BookList() {
 
   return (
     <div className="container mt-5">
-      <h1
-        className="text-center mb-4"
-        style={{ fontSize: "2.5rem", fontWeight: "bold" }}
-      >
-        Books
-      </h1>
-
       {/* Sorting controls */}
       <div className="d-flex justify-content-between mb-4">
         <div>
@@ -103,6 +106,15 @@ function BookList() {
                     <strong>Price: </strong>${b.price}
                   </li>
                 </ul>
+
+                <button
+                  className="btn btn-success"
+                  onClick={() =>
+                    navigate(`/purchase/${b.title}/${b.bookID}`)
+                  }
+                >
+                  Purchase
+                </button>
               </div>
             </div>
           </div>
