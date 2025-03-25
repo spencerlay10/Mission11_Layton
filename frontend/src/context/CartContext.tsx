@@ -15,22 +15,40 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((c) => c.bookID === item.price);
-      const updatedCart = prevCart.map((c) =>
-        c.bookID === item.bookID
-          ? { ...c, price: c.price + item.price }
-          : c
-      );
-
-      return existingItem ? updatedCart : [...prevCart, item];
+      const existingItem = prevCart.find((c) => c.bookID === item.bookID);
+      
+      if (existingItem) {
+        // If the item is already in the cart, increment the quantity
+        return prevCart.map((c) =>
+          c.bookID === item.bookID
+            ? { ...c, quantity: c.quantity + 1 }  // Increment quantity
+            : c
+        );
+      } else {
+        // If the item is new, add it with quantity 1
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
     });
   };
 
   const removeFromCart = (bookID: number) => {
-    setCart((prevCart) =>
-      prevCart.filter((c) => c.bookID !== bookID)
-    );
+    setCart((prevCart) => {
+      const itemToRemove = prevCart.find((c) => c.bookID === bookID);
+      
+      if (itemToRemove && itemToRemove.quantity > 1) {
+        // Decrease the quantity if greater than 1
+        return prevCart.map((c) =>
+          c.bookID === bookID
+            ? { ...c, quantity: c.quantity - 1 }
+            : c
+        );
+      } else {
+        // Remove the item entirely if quantity is 1
+        return prevCart.filter((c) => c.bookID !== bookID);
+      }
+    });
   };
+  
 
   const clearCart = () => {
     setCart(() => []);

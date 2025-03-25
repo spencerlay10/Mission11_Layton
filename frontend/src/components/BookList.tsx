@@ -53,7 +53,7 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   return (
     <div className="container mt-5">
       {/* Sorting controls */}
-      <div className="d-flex justify-content-between mb-4">
+      <div className="d-flex justify-content-between mb-4 gap-3">
         <div>
           <button
             className="btn btn-primary"
@@ -71,9 +71,9 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
       </div>
 
       {/* Display books in a grid */}
-      <div className="row">
+      <div className="book-list-grid row justify-content-center">
         {sortedBooks.map((b) => (
-          <div key={b.isbn} className="col-md-4 mb-4">
+          <div key={b.isbn} className={`mb-4 ${sortedBooks.length === 1 ? "col-md-6" : "col-md-4 col-lg-3"}`}>
             <div id="BookCard" className="card shadow-sm">
               <h5 className="card-header">{b.title}</h5>
               <div className="card-body">
@@ -110,7 +110,7 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
                 <button
                   className="btn btn-success"
                   onClick={() =>
-                    navigate(`/purchase/${b.title}/${b.bookID}`)
+                    navigate(`/purchase/${b.title}/${b.bookID}/${b.price}`)
                   }
                 >
                   Purchase
@@ -122,7 +122,7 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
       </div>
 
       {/* Pagination controls */}
-      <div className="d-flex justify-content-between align-items-center mt-4">
+      <div className="pagination-controls d-flex justify-content-between align-items-center mt-4">
         {/* Previous button */}
         <div className="d-flex">
           <button
