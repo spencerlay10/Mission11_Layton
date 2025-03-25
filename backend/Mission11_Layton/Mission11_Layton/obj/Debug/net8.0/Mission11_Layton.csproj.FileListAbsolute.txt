@@ -128,7 +128,6 @@ C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission1
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Mission11_Layton.props
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Mission11_Layton.props
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\Mission1.1F02E88B.Up2Date
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\Mission11_Layton.dll
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\refint\Mission11_Layton.dll
