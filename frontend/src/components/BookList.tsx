@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   // Hooks
+  // Makes it possible to sort items and pagination
   const [books, setBooks] = useState<Book[]>([]);
   const [pageSize, setPageSize] = useState<number>(10);
   const [pageNum, setPageNum] = useState<number>(1);
@@ -19,7 +20,8 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
       const categoryParams = selectedCategories
         .map((cat) => `bookCategories=${encodeURIComponent(cat)}`)
         .join("&");
-
+      
+      // Retrieves the necessary book items based on the categories selected
       const response = await fetch(
         `https://localhost:5000/Book?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ""}`,
         {

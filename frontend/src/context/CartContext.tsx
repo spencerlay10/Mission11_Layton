@@ -54,6 +54,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart(() => []);
   };
 
+  // Puts all of the cart information in a cart context provider to save the data
   return (
     <CartContext.Provider
       value={{ cart, addToCart, removeFromCart, clearCart }}

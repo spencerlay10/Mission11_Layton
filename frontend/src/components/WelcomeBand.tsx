@@ -1,3 +1,5 @@
+// Heading
+
 function WelcomeBand() {
   return (
     <h1

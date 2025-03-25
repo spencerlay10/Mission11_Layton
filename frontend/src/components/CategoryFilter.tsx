@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./CategoryFilter.css";
 
+// Puts all of the categories on the left with an option to check them with a checkbox
+
 function CategoryFilter({
   selectedCategories,
   setSelectedCategories,
@@ -14,13 +16,13 @@ function CategoryFilter({
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "https://localhost:5000/Book/GetCategories"
+          "https://localhost:5000/Book/GetCategories" // Retrieves the categories from the backend
         );
         const data = await response.json();
         console.log("Fetched categories:", data);
         setCategories(data);
       } catch (error) {
-        console.error("Error fetching categories", error);
+        console.error("Error fetching categories", error); // Error checking
       }
     };
 
@@ -32,7 +34,7 @@ function CategoryFilter({
       ? selectedCategories.filter((x) => x !== target.value)
       : [...selectedCategories, target.value];
 
-    setSelectedCategories(updatedCategories);
+    setSelectedCategories(updatedCategories); // Updates the categories when something is clicked
   }
 
   return (

@@ -1,3 +1,6 @@
+// Two extra bootstrap functionalities are on this page.
+// I used a modal and a toast using bootstrap
+
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { CartItem } from "../types/CartItem";
@@ -43,7 +46,7 @@ function CartPage() {
                         <td>
                           <button
                             className="btn btn-danger btn-sm"
-                            onClick={() => removeFromCart(item.bookID)}
+                            onClick={() => removeFromCart(item.bookID)} // Removes one item from the cart
                           >
                             Remove
                           </button>
@@ -58,7 +61,7 @@ function CartPage() {
               <div className="d-flex justify-content-between mt-4">
                 <button
                   className="btn btn-secondary"
-                  onClick={() => navigate("/books")}
+                  onClick={() => navigate("/books")} // goes back to the main page
                 >
                   Continue Browsing
                 </button>

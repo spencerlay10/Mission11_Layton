@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 import { CartItem } from "../types/CartItem";
 
 function PurchasePage() {
-  const { title, bookID, price, quantity } = useParams();
+  const { title, bookID, price, quantity } = useParams(); // Proper parameters are passed for use
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
@@ -18,11 +18,13 @@ function PurchasePage() {
     navigate("/cart");
   };
 
+  // Puts the title of the book and the price on a page to select whether you would like to buy
+
   return (
     <div className="container full-height">
       <div className="card center-card">
         <div className="card-header">
-          <h2>Purchase {title}</h2>
+          <h2>Purchase {title}</h2> 
         </div>
         <div className="card-body">
           {price !== undefined ? (

@@ -16,12 +16,12 @@ function BooksPage() {
         <div className="row">
           <div className="col-md-3">
             <CategoryFilter
-              selectedCategories={selectedCategories}
+              selectedCategories={selectedCategories} // Retrieves the categories that are selected
               setSelectedCategories={setSelectedCategories}
             />
           </div>
           <div className="col-md-9">
-            <BookList selectedCategories={selectedCategories} />
+            <BookList selectedCategories={selectedCategories} /> {/*Uses the categories that are selected*/} 
           </div>
         </div>
       </div>

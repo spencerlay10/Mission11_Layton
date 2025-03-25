@@ -5,7 +5,7 @@ import BooksPage from "./pages/BooksPage";
 import CartPage from "./pages/CartPage";
 import PurchasePage from "./pages/PurchasePage";
 
-
+// Routes are set up
 function App() {
   return (
     <>
@@ -14,7 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<BooksPage/>} />
             <Route path="/books" element={<BooksPage />} />
-            <Route path="/purchase/:title/:bookID/:price" element={<PurchasePage />} />
+            <Route path="/purchase/:title/:bookID/:price" element={<PurchasePage />} /> {/*passes the proper params needed*/}
             <Route path="/cart" element={<CartPage />} />
           </Routes>
         </Router>

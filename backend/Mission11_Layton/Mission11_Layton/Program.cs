@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BookDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("BookConnection")));
 
+// Makes switching pages possible
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
