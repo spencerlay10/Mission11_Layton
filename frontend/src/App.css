@@ -171,7 +171,6 @@ h2 {
   height: 16px;
 }
 
-/* Cart summary styling */
 .cart-summary {
   position: fixed;
   top: 10px;
@@ -181,10 +180,12 @@ h2 {
   border-radius: 8px;
   cursor: pointer;
   display: flex;
+  flex-direction: column;  /* Stack items vertically */
   align-items: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   font-size: 16px;
 }
+
 
 
 /* Center card on page */

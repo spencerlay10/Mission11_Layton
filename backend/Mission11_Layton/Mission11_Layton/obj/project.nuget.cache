@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U0WSoZ/0iik=",
+  "dgSpecHash": "c8X0Iqwutrg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sklay\\OneDrive\\IS413\\Mission11_Layton\\backend\\Mission11_Layton\\Mission11_Layton\\Mission11_Layton.csproj",
+  "projectFilePath": "C:\\Users\\sklay\\OneDrive\\IS413\\Mission11_Layton\\backend\\Mission11_layton\\Mission11_Layton\\Mission11_Layton.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sklay\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\sklay\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
