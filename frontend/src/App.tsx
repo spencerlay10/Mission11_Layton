@@ -4,6 +4,7 @@ import { CartProvider } from "./context/CartContext";
 import BooksPage from "./pages/BooksPage";
 import CartPage from "./pages/CartPage";
 import PurchasePage from "./pages/PurchasePage";
+import AdminProjectsPage from "./pages/AdminBooksPage";
 
 // Routes are set up
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/books" element={<BooksPage />} />
             <Route path="/purchase/:title/:bookID/:price" element={<PurchasePage />} /> {/*passes the proper params needed*/}
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/adminbooks" element={<AdminProjectsPage />} />
           </Routes>
         </Router>
       </CartProvider>

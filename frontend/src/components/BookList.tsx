@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Book } from "../types/Book";
 import { useNavigate } from "react-router-dom";
+import { fetchBooks } from "../api/BooksAPI";
+import Pagination from "./Pagination";
 
 function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   // Hooks
@@ -9,34 +11,33 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<Book[]>([]);
   const [pageSize, setPageSize] = useState<number>(10);
   const [pageNum, setPageNum] = useState<number>(1);
-  const [totalItems, setTotalItems] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const [sortedBooks, setSortedBooks] = useState<Book[]>([]);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // 'asc' for ascending, 'desc' for descending
-  const navigate = useNavigate();
+  
+
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const categoryParams = selectedCategories
-        .map((cat) => `bookCategories=${encodeURIComponent(cat)}`)
-        .join("&");
-      
-      // Retrieves the necessary book items based on the categories selected
-      const response = await fetch(
-        `https://localhost:5000/Book?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ""}`,
-        {
-          credentials: "include",
-        }
-      ); // Pulling from the backend
+    const loadBooks = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchBooks(pageSize, pageNum, selectedCategories);
 
-      const data = await response.json();
-      setBooks(data.books);
-      setTotalItems(data.totalNumBooks);
-      setTotalPages(Math.ceil(totalItems / pageSize));
+        setBooks(data.books);
+        setTotalPages(Math.ceil(data.totalNumBooks / pageSize));
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchBooks();
-  }, [pageSize, pageNum, totalItems, selectedCategories]);
+    loadBooks();
+  }, [pageSize, pageNum, selectedCategories]);
+
 
   // Function to sort books by title or any other field
   const handleSort = (field: keyof Book) => {
@@ -52,7 +53,10 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
     setSortedBooks(books); // Update the sorted books whenever books data changes
   }, [books]);
 
+  if (loading) return <p>Loading books...</p>;
+  if (error) return <p className="text-red-500">Error: {error}</p>;
   return (
+    <>
     <div className="container mt-5">
       {/* Sorting controls */}
       <div className="d-flex justify-content-between mb-4 gap-3">
@@ -124,62 +128,18 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
       </div>
 
       {/* Pagination controls */}
-      <div className="pagination-controls d-flex justify-content-between align-items-center mt-4">
-        {/* Previous button */}
-        <div className="d-flex">
-          <button
-            className={`btn btn-outline-primary ${pageNum === 1 ? "invisible" : ""}`}
-            onClick={() => setPageNum(pageNum - 1)}
-            aria-label="Previous"
-          >
-            Previous
-          </button>
-        </div>
-
-        {/* Page numbers */}
-        <div className="d-flex">
-          {[...Array(totalPages)].map((_, index) => (
-            <button
-              key={index + 1}
-              className={`btn ${pageNum === index + 1 ? "btn-primary active" : "btn-outline-primary"} me-2`}
-              onClick={() => setPageNum(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-
-        {/* Next button */}
-        <div className="d-flex">
-          <button
-            className={`btn btn-outline-primary ${pageNum === totalPages ? "invisible" : ""}`}
-            onClick={() => setPageNum(pageNum + 1)}
-            aria-label="Next"
-          >
-            Next
-          </button>
-        </div>
-      </div>
-
-      {/* Results per page */}
-      <div className="mt-4">
-        <label>
-          Results per page:
-          <select
-            className="form-select ms-2"
-            value={pageSize}
-            onChange={(p) => {
-              setPageSize(Number(p.target.value));
-              setPageNum(1);
-            }}
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
-        </label>
-      </div>
+      <Pagination
+        currentPage={pageNum}
+        totalPages={totalPages}
+        pageSize={pageSize}
+        onPageChange={setPageNum}
+        onPageSizeChange={(newSize) => {
+          setPageSize(newSize);
+          setPageNum(1);
+        }}
+      />
     </div>
+    </>
   );
 }
 
