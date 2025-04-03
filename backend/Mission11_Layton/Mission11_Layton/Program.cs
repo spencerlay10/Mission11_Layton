@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000", "https://agreeable-grass-02ca4471e.6.azurestaticapps.net/")
+            policy.WithOrigins("http://localhost:3000", "http://localhost:3001", "https://agreeable-grass-02ca4471e.6.azurestaticapps.net/")
                 .AllowCredentials()
                 .AllowAnyHeader()
                 .AllowAnyMethod();
