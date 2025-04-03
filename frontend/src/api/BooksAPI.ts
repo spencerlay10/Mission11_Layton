@@ -1,11 +1,12 @@
-import { Book } from "../types/Book";
+import { Book } from "../types/Book"; // Adjust the path as needed
 
 interface FetchBooksResponse {
   books: Book[];
   totalNumBooks: number;
 }
 
-const API_URL = "https://book-layton-backend-gmdkgudygxaqgyeb.eastus-01.azurewebsites.net/Book";
+const API_URL =
+  "https://book-layton-backend-gmdkgudygxaqgyeb.eastus-01.azurewebsites.net/Book";
 
 export const fetchBooks = async (
   pageSize: number,

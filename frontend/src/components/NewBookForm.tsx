@@ -14,7 +14,7 @@ const NewBookForm = ({ onSuccess, onCancel }: NewBookFormProps) => {
     author: "",
     publisher: "",
     isbn: "",
-    classificaion: "",
+    classification: "",
     category: "",
     pageCount: 0,
     price: 0,

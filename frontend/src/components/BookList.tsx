@@ -17,8 +17,6 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [loading, setLoading] = useState(true);
   const [sortedBooks, setSortedBooks] = useState<Book[]>([]);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // 'asc' for ascending, 'desc' for descending
-  
-
 
   useEffect(() => {
     const loadBooks = async () => {
@@ -38,7 +36,6 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
     loadBooks();
   }, [pageSize, pageNum, selectedCategories]);
 
-
   // Function to sort books by title or any other field
   const handleSort = (field: keyof Book) => {
     const sorted = [...books].sort((a, b) => {
@@ -57,88 +54,91 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   if (error) return <p className="text-red-500">Error: {error}</p>;
   return (
     <>
-    <div className="container mt-5">
-      {/* Sorting controls */}
-      <div className="d-flex justify-content-between mb-4 gap-3">
-        <div>
-          <button
-            className="btn btn-primary"
-            onClick={() => handleSort("title")}
-          >
-            Sort by Title: {sortOrder === "asc" ? "A-Z" : "Z-A"}
-          </button>
-          <button
-            className="btn btn-secondary ms-3"
-            onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-          >
-            Toggle Sort Order
-          </button>
+      <div className="container mt-5">
+        {/* Sorting controls */}
+        <div className="d-flex justify-content-between mb-4 gap-3">
+          <div>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleSort("title")}
+            >
+              Sort by Title: {sortOrder === "asc" ? "A-Z" : "Z-A"}
+            </button>
+            <button
+              className="btn btn-secondary ms-3"
+              onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+            >
+              Toggle Sort Order
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Display books in a grid */}
-      <div className="book-list-grid row justify-content-center">
-        {sortedBooks.map((b) => (
-          <div key={b.isbn} className={`mb-4 ${sortedBooks.length === 1 ? "col-md-6" : "col-md-4 col-lg-3"}`}>
-            <div id="BookCard" className="card shadow-sm">
-              <h5 className="card-header">{b.title}</h5>
-              <div className="card-body">
-                <ul className="list-unstyled">
-                  <li>
-                    <strong>Author: </strong>
-                    {b.author}
-                  </li>
-                  <li>
-                    <strong>Publisher: </strong>
-                    {b.publisher}
-                  </li>
-                  <li>
-                    <strong>ISBN: </strong>
-                    {b.isbn}
-                  </li>
-                  <li>
-                    <strong>Classification: </strong>
-                    {b.classification}
-                  </li>
-                  <li>
-                    <strong>Category: </strong>
-                    {b.category}
-                  </li>
-                  <li>
-                    <strong>Number of Pages: </strong>
-                    {b.pageCount}
-                  </li>
-                  <li>
-                    <strong>Price: </strong>${b.price}
-                  </li>
-                </ul>
+        {/* Display books in a grid */}
+        <div className="book-list-grid row justify-content-center">
+          {sortedBooks.map((b) => (
+            <div
+              key={b.isbn}
+              className={`mb-4 ${sortedBooks.length === 1 ? "col-md-6" : "col-md-4 col-lg-3"}`}
+            >
+              <div id="BookCard" className="card shadow-sm">
+                <h5 className="card-header">{b.title}</h5>
+                <div className="card-body">
+                  <ul className="list-unstyled">
+                    <li>
+                      <strong>Author: </strong>
+                      {b.author}
+                    </li>
+                    <li>
+                      <strong>Publisher: </strong>
+                      {b.publisher}
+                    </li>
+                    <li>
+                      <strong>ISBN: </strong>
+                      {b.isbn}
+                    </li>
+                    <li>
+                      <strong>Classification: </strong>
+                      {b.classification}
+                    </li>
+                    <li>
+                      <strong>Category: </strong>
+                      {b.category}
+                    </li>
+                    <li>
+                      <strong>Number of Pages: </strong>
+                      {b.pageCount}
+                    </li>
+                    <li>
+                      <strong>Price: </strong>${b.price}
+                    </li>
+                  </ul>
 
-                <button
-                  className="btn btn-success"
-                  onClick={() =>
-                    navigate(`/purchase/${b.title}/${b.bookID}/${b.price}`)
-                  }
-                >
-                  Purchase
-                </button>
+                  <button
+                    className="btn btn-success"
+                    onClick={() =>
+                      navigate(`/purchase/${b.title}/${b.bookID}/${b.price}`)
+                    }
+                  >
+                    Purchase
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Pagination controls */}
-      <Pagination
-        currentPage={pageNum}
-        totalPages={totalPages}
-        pageSize={pageSize}
-        onPageChange={setPageNum}
-        onPageSizeChange={(newSize) => {
-          setPageSize(newSize);
-          setPageNum(1);
-        }}
-      />
-    </div>
+        {/* Pagination controls */}
+        <Pagination
+          currentPage={pageNum}
+          totalPages={totalPages}
+          pageSize={pageSize}
+          onPageChange={setPageNum}
+          onPageSizeChange={(newSize) => {
+            setPageSize(newSize);
+            setPageNum(1);
+          }}
+        />
+      </div>
     </>
   );
 }
