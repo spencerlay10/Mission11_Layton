@@ -63,6 +63,11 @@ namespace Mission11_Layton.Controllers
         public IActionResult UpdateBook(int bookID, [FromBody] Book updatedBook) {
             var existingBook = _bookContext.Books.Find(bookID);
 
+            if (existingBook == null)
+            {
+                return NotFound(new { message = "Book not found" });
+            }
+
             existingBook.Title = updatedBook.Title;
             existingBook.Author = updatedBook.Author;
             existingBook.Publisher = updatedBook.Publisher;

@@ -135,3 +135,11 @@ C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission1
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\Mission11_Layton.genruntimeconfig.cache
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\ref\Mission11_Layton.dll
 C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\obj\Debug\net8.0\Mission11_Layton.sourcelink.json
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\publish\web.config
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\publish\appsettings.Development.json
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\publish\appsettings.json
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\publish\Mission11_Layton.deps.json
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\publish\Mission11_Layton.runtimeconfig.json
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\publish\Mission11_Layton.staticwebassets.endpoints.json
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\Bookstore.sqlite
+C:\Users\sklay\OneDrive\IS413\Mission11_Layton\backend\Mission11_Layton\Mission11_Layton\bin\Debug\net8.0\Mission11_Layton.http
