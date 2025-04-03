@@ -6,7 +6,7 @@ interface FetchBooksResponse {
 }
 
 const API_URL =
-  "https://book-layton-backend-gmdkgudygxaqgyeb.eastus-01.azurewebsites.net/Book";
+  "https://books-layton-backend-dzg3exhxg5b6aadt.eastus-01.azurewebsites.net/Book";
 
 export const fetchBooks = async (
   pageSize: number,
