@@ -55,7 +55,6 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   return (
     <>
       <div className="container mt-5">
-      <button className="btn btn-primary mb-3" onClick={() => navigate("/adminbooks")}>Admin Page</button>
         {/* Sorting controls */}
         <div className="d-flex justify-content-between mb-4 gap-3">
           <div>
