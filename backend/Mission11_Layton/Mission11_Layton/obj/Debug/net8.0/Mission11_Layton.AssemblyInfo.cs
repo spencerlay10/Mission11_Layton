@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mission11_Layton")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1077d8aa5430f16424181c9c2751a1dbaaf7b854")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1021b340ac98a7f8ee0912041bc3d9309a8c3dc4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mission11_Layton")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mission11_Layton")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
