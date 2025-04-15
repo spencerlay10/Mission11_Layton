@@ -184,7 +184,9 @@ h2 {
   align-items: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   font-size: 16px;
+  z-index: 9999;  /* Ensure the cart summary is always on top */
 }
+
 
 
 
